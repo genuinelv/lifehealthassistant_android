@@ -25,7 +25,7 @@ public interface UserInfoService {
     public Call<Re<List<User>>> getall();
 
     @POST("user")
-    public Call<Re> save(@Body User user);
+    public Call<Re<User>> save(@Body User user);
 
     @PUT("Ui-Gui/test/put/{name}")
     public Call<User> testput(@Path("name") String name);
