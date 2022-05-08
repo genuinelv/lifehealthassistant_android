@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_diet.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_epidemic.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_login.xml" value="0.213768115942029" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_main.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_register.xml" value="0.213768115942029" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_save_diet.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_user.xml" value="0.29010416666666666" />
       </map>
     </option>
   </component>

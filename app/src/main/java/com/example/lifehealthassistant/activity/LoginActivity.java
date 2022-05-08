@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.lifehealthassistant.R;
 import com.example.lifehealthassistant.bean.Re;
 import com.example.lifehealthassistant.bean.User;
+import com.example.lifehealthassistant.config.ServerConfiguration;
 import com.example.lifehealthassistant.service.UserInfoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 Log.d("lzn",userIdInput+"++++"+userPasswordInput);
 
                 //创建Retrofit对象
-                Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.51.71/")
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
                         .addConverterFactory(GsonConverterFactory.create(new Gson()))
                         .build();
                 //生成接口对象

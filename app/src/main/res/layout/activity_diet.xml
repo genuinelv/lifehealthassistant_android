@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.DietActivity">
+    tools:context=".activity.DietActivity"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/response_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        />
+
+    <Button
+        android:id="@+id/save_diet_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="记录饮食"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="31dp" />
+
+    <Button
+        android:id="@+id/search_diet_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="历史记录"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="94dp"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="数据统计"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="193dp"
+        />
+
+    <Button
+        android:id="@+id/food_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="食物百科" />
+
+
+</LinearLayout>

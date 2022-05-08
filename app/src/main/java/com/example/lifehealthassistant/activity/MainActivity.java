@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webView = (WebView) findViewById(R.id.web_view);
+        WebView webView = (WebView) findViewById(R.id.news_web_view);
         webView.getSettings ( ).setJavaScriptEnabled(true) ;
         webView.setWebViewClient ( new WebViewClient() );
         webView.loadUrl("https://jiankang.163.com") ;
