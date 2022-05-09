@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"
         android:text="记录饮食"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="31dp" />
+        tools:layout_editor_absoluteY="31dp"
+        android:onClick="onSaveDiet"/>
 
     <Button
         android:id="@+id/search_diet_button"
@@ -30,6 +31,7 @@
         android:text="历史记录"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="94dp"
+        android:onClick="onSearchDiet"
         />
 
     <Button
@@ -45,7 +47,8 @@
         android:id="@+id/food_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="食物百科" />
+        android:text="食物百科"
+        android:onClick="onFood"/>
 
 
 </LinearLayout>
