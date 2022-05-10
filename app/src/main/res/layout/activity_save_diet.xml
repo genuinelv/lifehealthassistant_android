@@ -19,19 +19,18 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/date_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="日期"/>
 
-            <EditText
-                android:id="@+id/date"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/select_date"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="35dp"
-                android:hint="请输入用户名"
-                android:inputType="text" />
+                android:text="选择日期"
+                android:onClick="onSelectDate"/>
+
 
         </LinearLayout>
         <LinearLayout
@@ -40,19 +39,17 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/text_dietname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="餐名"/>
 
-            <EditText
-                android:id="@+id/dietname"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="35dp"
-                android:hint="请输入用户名"
-                android:inputType="text" />
+            <Spinner
+                android:id="@+id/spinner_dietname"
+                android:layout_width="182dp"
+                android:layout_height="64dp"
+                />
+
 
         </LinearLayout>
 
@@ -62,19 +59,17 @@
             android:layout_height="wrap_content">
 
             <TextView
+                android:id="@+id/time_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="时间"/>
 
-            <EditText
-                android:id="@+id/time"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/select_time"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="35dp"
-                android:layout_marginTop="50dp"
-                android:layout_marginRight="35dp"
-                android:hint="请输入用户名"
-                android:inputType="text" />
+                android:text="选择时间"
+                android:onClick="onSelectTime"/>
         </LinearLayout>
 
         <LinearLayout
@@ -98,6 +93,7 @@
                 android:id="@+id/add_food"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="onAddFood"
                 android:text="添加食物"/>
 
             <LinearLayout
@@ -136,6 +132,11 @@
 
         </LinearLayout>
 
+            <Button
+                android:id="@+id/upload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="上传"/>
 
         </LinearLayout>
     </ScrollView>

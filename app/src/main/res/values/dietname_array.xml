@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dietname">
+        <item>早饭</item>
+        <item>午饭</item>
+        <item>晚饭</item>
+    </string-array>
+</resources>
