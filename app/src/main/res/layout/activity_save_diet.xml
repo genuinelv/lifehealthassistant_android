@@ -81,20 +81,11 @@
                 android:text="食物"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <LinearLayout
-                android:id="@+id/layoutButton"
+            <EditText
+                android:id="@+id/food_edittext"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="wrap_content" />
 
-                <!--      该位置动态添加          -->
-            </LinearLayout>
-            <Button
-                android:id="@+id/add_food"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onAddFood"
-                android:text="添加食物"/>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -105,12 +96,14 @@
                     android:id="@+id/take_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="拍照"/>
+                    android:text="拍照"
+                    android:onClick="onCamera"/>
                 <Button
                     android:id="@+id/add_photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="图库"/>
+                    android:text="图库"
+                    android:onClick="onPhoto"/>
 
             </LinearLayout>
 
