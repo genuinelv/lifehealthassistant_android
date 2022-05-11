@@ -27,10 +27,6 @@ public interface UserInfoService {
     @POST("user")
     public Call<Re<User>> save(@Body User user);
 
-    @PUT("Ui-Gui/test/put/{name}")
-    public Call<User> testput(@Path("name") String name);
 
-    @DELETE("Ui-Gui/test/delete/{name}")
-    public Call<User> testdelete(@Path("name") String name);
 
 }

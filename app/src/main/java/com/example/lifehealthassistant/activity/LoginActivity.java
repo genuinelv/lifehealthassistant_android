@@ -77,8 +77,8 @@ public class LoginActivity extends AppCompatActivity {
                                 if (pwdGet.equals(userPasswordInput)) {//密码正确
                                     //MainActivity.actionStart(LoginActivity.this,userNameInput,null);//将登录使用的用户名传给下一个活动MainActivity
                                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                                    startActivity(intent);
+                                    MainActivity.actionStart(LoginActivity.this,idInteger);
+
                                 } else {//密码错误
                                     Toast.makeText(LoginActivity.this, "密码错误！", Toast.LENGTH_SHORT).show();
                                 }

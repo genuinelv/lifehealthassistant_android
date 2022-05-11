@@ -11,6 +11,7 @@ import android.annotation.TargetApi;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.ContentUris;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -63,6 +64,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SaveDietActivity extends AppCompatActivity {
 
+    private int userid;
     private Spinner spin_dietname;
     private TextView datetext;
     private TextView timetext;
@@ -100,7 +102,7 @@ public class SaveDietActivity extends AppCompatActivity {
         picture2=(ImageView) findViewById(R.id.picture2);
         picture3=(ImageView) findViewById(R.id.picture3);
         editText_food=(EditText)findViewById(R.id.food_edittext);
-
+        userid=getIntent().getIntExtra("userid",1);
 
 
         spin_dietname=(Spinner) findViewById(R.id.spinner_dietname);
@@ -122,6 +124,11 @@ public class SaveDietActivity extends AppCompatActivity {
         });
     }
 
+    public static void actionStart(Context context, int id){
+        Intent intent=new Intent(context,SaveDietActivity.class);
+        intent.putExtra("userid",id);
+        context.startActivity(intent);
+    }
 
     public void onSelectDate(View v){
         Calendar calendar = Calendar.getInstance();
@@ -393,7 +400,7 @@ public class SaveDietActivity extends AppCompatActivity {
                     adiet.setPicture2(getDiet.getPicture2());
                     adiet.setPicture3(getDiet.getPicture3());
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.saveDiet(adiet);
+                    final Call<Re<String>> call2 = service.saveDiet(adiet,userid);
                     call2.enqueue(new Callback<Re<String>>() {
                         @Override
                         public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
