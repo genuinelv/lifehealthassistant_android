@@ -32,9 +32,8 @@ public class DietActivity extends AppCompatActivity {
         SaveDietActivity.actionStart(DietActivity.this,userid);
     }
 
-    public void onSearchDiet(View v){
-        Intent intent = new Intent(DietActivity.this,DietActivity.class);
-        startActivity(intent);
+    public void onShowDiet(View v){
+        ShowDietActivity.actionStart(DietActivity.this,userid);
     }
 
     public void onFood(View v){

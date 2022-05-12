@@ -21,7 +21,9 @@ public interface DietService {
     @POST("diet/save_diet_pic")
     public Call<Re<Diet>> saveDietPic(@Part List<MultipartBody.Part> parts);
 
-
     @POST("diet/save_diet")
     public Call<Re<String>> saveDiet(@Body Diet diet, @Query("id") Integer id);
+
+    @POST("diet/get_diet")
+    public Call<Re<Diet>> getDiet(@Body Diet diet, @Query("id") Integer id);
 }

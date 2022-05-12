@@ -181,7 +181,7 @@ public class SaveDietActivity extends AppCompatActivity {
         //Environment.getExternalStorageDirectory() + File.separator + Environment.DIRECTORY_DCIM+File.separator+"Camera"+File.separator
         String reallypath=getExternalCacheDir()+"/output_image"+System.currentTimeMillis()+".jpg";
         File outputImage = new File(reallypath) ;
-//        而要是存入一个真实的相册目录，拍完图片却并不能立刻存入相册，故还是解决上一行的根本问题才行
+
 
         if(photoCount==1){
             picture_uri_1=reallypath;
