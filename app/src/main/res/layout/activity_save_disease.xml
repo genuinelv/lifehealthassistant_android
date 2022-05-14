@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="开始日期"/>
+
+                <Button
+                    android:id="@+id/select_datestart"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择开始日期"
+                    android:onClick="onSelectDateStart"/>
+                <TextView
+                    android:id="@+id/datestart_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="结束日期"/>
+
+                <Button
+                    android:id="@+id/select_dateend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="选择结束日期"
+                    android:onClick="onSelectDateEnd"/>
+                <TextView
+                    android:id="@+id/dateend_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="病名"/>
+
+                <EditText
+                    android:id="@+id/diseasename_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:text="症状"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/symptom_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="症状图片"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/take_photo_for_sym"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="拍照"
+                        android:onClick="onCameraForSym"/>
+                    <Button
+                        android:id="@+id/add_photo_for_sym"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图库"
+                        android:onClick="onPhotoForSym"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/sym_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:text="采取药物"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <EditText
+                    android:id="@+id/medicine_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="药物图片"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <Button
+                        android:id="@+id/take_photo_for_med"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="拍照"
+                        android:onClick="onCameraForMed"/>
+                    <Button
+                        android:id="@+id/add_photo_for_med"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="图库"
+                        android:onClick="onPhotoForMed"/>
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/med_pic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"/>
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/upload_disease"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="上传"
+                android:onClick="onLoadDisease"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

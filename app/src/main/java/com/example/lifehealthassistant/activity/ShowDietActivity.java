@@ -99,7 +99,7 @@ public class ShowDietActivity extends AppCompatActivity {
                 calendar.get(Calendar.DAY_OF_MONTH));
         dialog.show();
 
-        // 确认按钮
+        //确认按钮
         dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(view -> {
             // 确认年月日
             int year = dialog.getDatePicker().getYear();

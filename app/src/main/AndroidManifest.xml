@@ -15,6 +15,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeHealthAssistant">
         <activity
+            android:name=".activity.ShowDiseaseDiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ShowDiseaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SaveDiseaseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.DiseaseActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ShowDietActivity"
             android:exported="false" />
 

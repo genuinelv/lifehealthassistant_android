@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/response_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        />
+
+    <Button
+        android:id="@+id/show_disease_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查看病历"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="31dp"
+        android:onClick="onShowDisease"/>
+
+    <Button
+        android:id="@+id/save_disease_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="创建病历"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="94dp"
+        android:onClick="onSaveDisease" />
+
+    <Button
+        android:id="@+id/save_remind_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="创建用药提醒"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="193dp"
+        android:onClick="onSaveRemind"
+        />
+
+    <Button
+        android:id="@+id/show_remind_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="历史用药提醒"
+        android:onClick="onShowRemind"/>
+
+
+</LinearLayout>

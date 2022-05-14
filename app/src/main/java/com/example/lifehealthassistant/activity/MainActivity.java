@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getIntExtra("userid",userid);
         WebView webView = (WebView) findViewById(R.id.news_web_view);
         webView.getSettings ( ).setJavaScriptEnabled(true) ;
         webView.setWebViewClient ( new WebViewClient() );
@@ -53,8 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onMedical(View v){
-        Intent intent = new Intent(MainActivity.this,MedicalActivity.class);
-        startActivity(intent);
+        DiseaseActivity.actionStart(MainActivity.this,userid);
     }
 
     public void onPerson(View v){

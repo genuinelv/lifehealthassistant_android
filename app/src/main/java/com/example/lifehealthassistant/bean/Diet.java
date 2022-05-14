@@ -12,6 +12,7 @@ public class Diet {
     private String picture2;
     private String picture3;
 
+    public Diet(){}
     public Diet(String datetime, String food, String dietname) {
         this.datetime = datetime;
 
