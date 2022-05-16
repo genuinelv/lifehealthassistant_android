@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerTodb(int idInteger,String userPasswordInput,String userPasswordAgainInput){
         if (userPasswordInput.equals(userPasswordAgainInput)) {//两次密码一致
-            User user=new User(idInteger,"系统用户",userPasswordInput);
+            User user=new User(idInteger,"系统用户",userPasswordInput,null);
 
             //生成接口对象
             UserInfoService service = retrofit.create(UserInfoService.class);

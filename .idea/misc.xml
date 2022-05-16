@@ -3,19 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_bmi.xml" value="0.3333333333333333" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_diet.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_disease.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_epidemic.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_exercise.xml" value="0.1" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_fat.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_food.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_login.xml" value="0.213768115942029" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_main.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_medical.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_register.xml" value="0.213768115942029" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_save_alarm.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_save_diet.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_save_disease.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_show_diet.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_show_disease.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_show_disease_detail.xml" value="0.29010416666666666" />
-        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_user.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_update_user.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/activity_user.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/disease_item.xml" value="0.1" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/item_a_dietname.xml" value="0.12447916666666667" />
         <entry key="..\:/AndroidStudioProjects/LifeHealthAssistant/app/src/main/res/layout/layout.xml" value="0.12447916666666667" />

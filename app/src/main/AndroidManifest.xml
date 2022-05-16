@@ -15,6 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LifeHealthAssistant">
         <activity
+            android:name=".activity.UpdateUserActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.FatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.BMIActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ShowAlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.SaveAlarmActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ShowDiseaseDiActivity"
             android:exported="false" />
         <activity
@@ -49,9 +64,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.EpidemicActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MedicalActivity"
             android:exported="false" />
         <activity
             android:name=".activity.UserActivity"

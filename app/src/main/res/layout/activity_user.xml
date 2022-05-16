@@ -5,28 +5,29 @@
 
     android:orientation="vertical">
     <ImageView
+        android:id="@+id/userpic_show_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="50dp"
         android:src="@drawable/admin" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/username_show_text"
+        android:text="系统用户"/>
 
     <Button
-        android:id="@+id/userInfo_button"
+        android:id="@+id/show_health_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="35dp"
-        android:onClick="onUserInfo"
-        android:text="登录" />
+        android:onClick="onShowHealth"
+        android:text="健康档案" />
+
     <Button
         android:id="@+id/updateUInfo_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="35dp"
         android:onClick="onUpdateUInfo"
-        android:text="注册 " />
+        android:text="修改个人信息 " />
 </LinearLayout>

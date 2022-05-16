@@ -57,8 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onPerson(View v){
-        Intent intent = new Intent(MainActivity.this,UserActivity.class);
-        startActivity(intent);
+        UserActivity.actionStart(MainActivity.this,userid);
     }
 
 }

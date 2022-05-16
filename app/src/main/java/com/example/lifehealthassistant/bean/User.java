@@ -4,13 +4,15 @@ public class User {
     private int id;
     private String name;
     private String password;
+    private String photo;
 
     public User(){}
 
-    public User(int id,String name,String password){
+    public User(int id,String name,String password,String photo){
         this.id=id;
         this.name=name;
         this.password=password;
+        this.photo=photo;
     }
 
     @Override
@@ -19,6 +21,7 @@ public class User {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 
@@ -44,5 +47,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 }

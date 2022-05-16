@@ -46,7 +46,7 @@
         android:id="@+id/show_remind_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="历史用药提醒"
+        android:text="管理用药提醒"
         android:onClick="onShowRemind"/>
 
 
