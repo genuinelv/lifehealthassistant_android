@@ -1,8 +1,10 @@
 package com.example.lifehealthassistant.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +39,7 @@ public class UserActivity extends AppCompatActivity {
 
     private int userid;
     private TextView username_show_text;
+    private TextView usersex_show_text;
     private ImageView userpic_show_image;
 
     @Override
@@ -45,6 +48,7 @@ public class UserActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user);
         userid=getIntent().getIntExtra("userid",1);
         username_show_text=(TextView) findViewById(R.id.username_show_text);
+        usersex_show_text=(TextView) findViewById(R.id.usersex_show_text);
         userpic_show_image=(ImageView) findViewById(R.id.userpic_show_image);
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
@@ -52,12 +56,14 @@ public class UserActivity extends AppCompatActivity {
         UserInfoService service = retrofit.create(UserInfoService.class);
         //调用接口方法返回Call对象
         final Call<Re<User>> call2 = service.getById(userid);
+        System.out.println(userid);
         call2.enqueue(new Callback<Re<User>>() {
             @Override
             public void onResponse(Call<Re<User>> call, retrofit2.Response<Re<User>> response) {
                 System.out.println(response.body());
                 User getUser=response.body().getData();
                 username_show_text.setText(getUser.getName());
+                usersex_show_text.setText(getUser.getSex());
                 if(getUser.getPhoto()!=null){
                     new Thread(new Runnable() {
                         @Override
@@ -126,21 +132,71 @@ public class UserActivity extends AppCompatActivity {
 
             }
         });
-        //showUser();
-    }
-    private void showUser(){
 
     }
+
     public static void actionStart(Context context, int id){
         Intent intent=new Intent(context, UserActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
     }
+    public void onDeleteUser(View view){
+        AlertDialog.Builder builder=new AlertDialog.Builder(UserActivity.this);
+        builder.setTitle("是否要注销该账号");
+        builder.setMessage("注销将会删除该账号的所有信息");
+        builder.setCancelable(false);
+        builder.setPositiveButton("确认", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
+                        .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
+                //生成接口对象
+                UserInfoService service = retrofit.create(UserInfoService.class);
+                //调用接口方法返回Call对象
+                final Call<Re<String>> call2 = service.deleteById(userid);
+                call2.enqueue(new Callback<Re<String>>() {
+                    @Override
+                    public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        System.out.println(response.body());
+                    }
+
+                    @Override
+                    public void onFailure(Call<Re<String>> call, Throwable t) {
+
+                    }
+                });
+                Intent intent = new Intent(UserActivity.this,LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {}
+        });
+        builder.show();
+
+
+
+    }
 
     public void onUpdateUInfo(View v){
         UpdateUserActivity.actionStart(UserActivity.this,userid);
     }
-
-
+    public void onShowHealth(View v){
+        ShowHealthActivity.actionStart(UserActivity.this,userid);
+    }
+    public void onExit(View v){
+        Intent intent = new Intent(UserActivity.this,LoginActivity.class);
+        startActivity(intent);
+    }
+    public void onMain3(View view){
+        MainActivity.actionStart(UserActivity.this,userid);
+    }
+    public void onMedical3(View view){
+        DiseaseActivity.actionStart(UserActivity.this,userid);
+    }
+    public void onPerson3(View view){
+        UserActivity.actionStart(UserActivity.this,userid);
+    }
 
 }

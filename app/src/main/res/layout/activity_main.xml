@@ -16,12 +16,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <Button
                 android:id="@+id/epidemic_button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:onClick="onEpidemic"
-                android:text="疫情风险"/>
+                android:layout_height="200dp"
+                android:background="@drawable/epidemic_pic"
+                android:onClick="onEpidemic" />
 
         </LinearLayout>
 
@@ -33,25 +34,34 @@
             <Button
                 android:id="@+id/diet_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:onClick="onDiet"
-                android:text="饮食"/>
+                android:background="@drawable/diet_pic"
+                android:text="饮食"
+                android:textSize="30dp"/>
 
             <Button
                 android:id="@+id/exercise_button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_weight="1"
                 android:onClick="onExercise"
-                android:text="运动"/>
+                android:background="@drawable/exercise_pic"
+                android:text="运动"
+                android:textSize="30dp"/>
 
 
         </LinearLayout>
 
 
-        <WebView
-            android:id="@+id/news_web_view"
+<!--        <WebView-->
+<!--            android:id="@+id/news_web_view"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/datadto_recycler_view"
+            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

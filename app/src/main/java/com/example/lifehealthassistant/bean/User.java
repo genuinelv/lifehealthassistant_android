@@ -2,27 +2,38 @@ package com.example.lifehealthassistant.bean;
 
 public class User {
     private int id;
-    private String name;
     private String password;
+    private String name;
+    private String sex;
     private String photo;
 
     public User(){}
 
-    public User(int id,String name,String password,String photo){
-        this.id=id;
-        this.name=name;
-        this.password=password;
-        this.photo=photo;
+    public User(int id, String password, String name, String sex, String photo) {
+        this.id = id;
+        this.password = password;
+        this.name = name;
+        this.sex = sex;
+        this.photo = photo;
     }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
                 ", photo='" + photo + '\'' +
                 '}';
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public int getId() {

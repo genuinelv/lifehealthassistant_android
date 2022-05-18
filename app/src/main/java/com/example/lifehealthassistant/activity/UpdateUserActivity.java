@@ -24,6 +24,8 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.lifehealthassistant.R;
@@ -52,6 +54,7 @@ public class UpdateUserActivity extends AppCompatActivity {
     public static final int CHOOSE_PHOTO=2;
     private Uri imageUri;
 
+    private RadioGroup radioGroup;
     private EditText username_update_edittext;
     private EditText password_update_edittext;
     private ImageView userpic_update_image;
@@ -65,6 +68,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         userid=getIntent().getIntExtra("userid",1);
         username_update_edittext=(EditText) findViewById(R.id.username_update_edittext);
         password_update_edittext=(EditText) findViewById(R.id.password_update_edittext);
+        radioGroup=(RadioGroup)findViewById(R.id.radioGroup2);
         userpic_update_image=(ImageView) findViewById(R.id.userpic_update_image);
     }
 
@@ -215,12 +219,21 @@ public class UpdateUserActivity extends AppCompatActivity {
 
     }
     public void onLoadUser(View view){
+        String sex="男";
+        for (int i = 0; i < radioGroup.getChildCount(); i++) {
+            RadioButton rd = (RadioButton) radioGroup.getChildAt(i);
+            if (rd.isChecked()) {
+                sex=rd.getText().toString();
+                break;
+            }
+        }
         String aaa=username_update_edittext.getText().toString();
         String bbb=password_update_edittext.getText().toString();
 
         User user=new User();
         user.setId(userid);
         user.setName(aaa);
+        user.setSex(sex);
         user.setPassword(bbb);
         user.setPhoto(userphoto);
 
@@ -252,6 +265,9 @@ public class UpdateUserActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
                             System.out.println(response.body());
+                            UserActivity.actionStart(UpdateUserActivity.this,userid);
+                            //放在retrofit外。比如282行，跳回useractivity会无法显示修改的内容，大概网络是多线程的
+                            //执行跳转功能的线程在上传修改信息的线程前完成，故无法显示最新的
                         }
 
                         @Override
@@ -268,11 +284,10 @@ public class UpdateUserActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<Re<User>> call, Throwable t) {
-
             }
 
 
         });
-        UserActivity.actionStart(UpdateUserActivity.this,userid);
+
     }
 }

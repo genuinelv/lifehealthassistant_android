@@ -39,6 +39,15 @@ public class DiseaseActivity extends AppCompatActivity {
     public void onShowRemind(View view){
 
     }
+    public void onMain2(View view){
+        MainActivity.actionStart(DiseaseActivity.this,userid);
+    }
+    public void onMedical2(View view){
+        DiseaseActivity.actionStart(DiseaseActivity.this,userid);
+    }
+    public void onPerson2(View view){
+        UserActivity.actionStart(DiseaseActivity.this,userid);
+    }
 
 
 

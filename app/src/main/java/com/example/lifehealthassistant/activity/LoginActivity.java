@@ -3,12 +3,15 @@ package com.example.lifehealthassistant.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,10 +32,29 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+    private SharedPreferences.Editor editor;
+    private CheckBox rememberPass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
+        rememberPass=(CheckBox)findViewById(R.id.remember_pass);
+        EditText userIdText = (EditText) findViewById(R.id.userIdLoginText);
+        EditText userPasswordText = (EditText) findViewById(R.id.userPasswordLoginText);
+
+        Log.d("lzn", "onCreate: "+ServerConfiguration.IP);
+        boolean isRemember=sharedPreferences.getBoolean("remember_password",false);
+        if(isRemember){
+            int account=sharedPreferences.getInt("account",1);
+            String passw=sharedPreferences.getString("password","");
+            userIdText.setText(String.valueOf(account));
+            userPasswordText.setText(passw);
+            rememberPass.setChecked(true);
+
+        }
 
         //登录监听
         Button loginButton = (Button) findViewById(R.id.login_button);
@@ -40,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                EditText userIdText = (EditText) findViewById(R.id.userIdLoginText);
-                EditText userPasswordText = (EditText) findViewById(R.id.userPasswordLoginText);
                 final String userIdInput = userIdText.getText().toString();
                 int idInteger=Integer.parseInt(userIdInput);
                 final String userPasswordInput = userPasswordText.getText().toString();
@@ -70,13 +90,23 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "没有该用户！", Toast.LENGTH_SHORT).show();
                             }
                             else{//有人
-
                                 User u= response.body().getData();
                                 String pwdGet = u.getPassword();
                                 Log.d("lzn",pwdGet+"++++"+userPasswordInput);
                                 if (pwdGet.equals(userPasswordInput)) {//密码正确
                                     //MainActivity.actionStart(LoginActivity.this,userNameInput,null);//将登录使用的用户名传给下一个活动MainActivity
                                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                    editor=sharedPreferences.edit();
+                                    if(rememberPass.isChecked()){
+                                        editor.putBoolean("remember_password",true);
+                                        editor.putInt("account",idInteger);
+                                        editor.putString("password",pwdGet);
+                                    }
+                                    else
+                                        editor.clear();
+
+                                    editor.commit();
+
                                     MainActivity.actionStart(LoginActivity.this,idInteger);
 
                                 } else {//密码错误

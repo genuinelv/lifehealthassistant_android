@@ -116,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerTodb(int idInteger,String userPasswordInput,String userPasswordAgainInput){
         if (userPasswordInput.equals(userPasswordAgainInput)) {//两次密码一致
-            User user=new User(idInteger,"系统用户",userPasswordInput,null);
+            User user=new User(idInteger,userPasswordInput,"系统用户","无",null);
 
             //生成接口对象
             UserInfoService service = retrofit.create(UserInfoService.class);
@@ -133,6 +133,8 @@ public class RegisterActivity extends AppCompatActivity {
                     if(response.body().getFlag()){//成功创建
 
                         Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                        startActivity(intent);
 
                     }else{//失败，请重试
 
