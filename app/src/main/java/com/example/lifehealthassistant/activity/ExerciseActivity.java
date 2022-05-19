@@ -21,7 +21,7 @@ public class ExerciseActivity extends AppCompatActivity {
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.setWebViewClient ( new WebViewClient() );
-        webView.loadUrl("https://www.hiyd.com/") ;
+        webView.loadUrl("http://xuetangzaixian.com/yundong/") ;
 
     }
     public void onBMI(View v){

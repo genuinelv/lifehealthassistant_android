@@ -195,8 +195,8 @@ public class UserActivity extends AppCompatActivity {
     public void onMain3(View view){
         MainActivity.actionStart(UserActivity.this,userid);
     }
-    public void onMedical3(View view){
-        DiseaseActivity.actionStart(UserActivity.this,userid);
+    public void onFunction3(View view){
+        FunctionActivity.actionStart(UserActivity.this,userid);
     }
     public void onPerson3(View view){
         UserActivity.actionStart(UserActivity.this,userid);

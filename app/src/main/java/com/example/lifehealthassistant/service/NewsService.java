@@ -17,7 +17,7 @@ public interface NewsService {
     //key=b646373d5b1b0d7628c7ae1bfae514d0
     //key=136c500303493492d6f855c6a62f48ee
     //key=5bc999ffcd1dda45b35f6b00fc40fea1
-    //key=304e0e410d0de9779780d834f6a01956
-    @GET("index?type=jiankang&key=304e0e410d0de9779780d834f6a01956")
+    //key=304e0e410d0de9779780d834f6a01956//10
+    @GET("index?type=jiankang&key=5bc999ffcd1dda45b35f6b00fc40fea1")
     public Call<News> getNews();
 }

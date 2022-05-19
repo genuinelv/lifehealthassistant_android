@@ -93,16 +93,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this,ExerciseActivity.class);
         startActivity(intent);
     }
-    public void onMain(View v){
+
+    public void onMain1(View v){
         Intent intent = new Intent(MainActivity.this,MainActivity.class);
         startActivity(intent);
     }
-
-    public void onMedical(View v){
-        DiseaseActivity.actionStart(MainActivity.this,userid);
+    public void onFunction1(View v){
+        FunctionActivity.actionStart(MainActivity.this,userid);
     }
 
-    public void onPerson(View v){
+    public void onPerson1(View v){
         UserActivity.actionStart(MainActivity.this,userid);
     }
 

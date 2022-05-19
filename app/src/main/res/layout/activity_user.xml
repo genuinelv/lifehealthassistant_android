@@ -101,7 +101,7 @@
         android:layout_height="wrap_content" >
 
         <Button
-            android:id="@+id/mainbutton3"
+
             android:layout_gravity="left"
             android:layout_weight="1"
             android:layout_width="wrap_content"
@@ -109,15 +109,15 @@
             android:onClick="onMain3"
             android:text="首页"/>
         <Button
-            android:id="@+id/medicalbutton3"
+
             android:layout_gravity="center"
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="onMedical3"
+            android:onClick="onFunction3"
             android:text="医疗"/>
         <Button
-            android:id="@+id/personbutton3"
+
             android:layout_gravity="right"
             android:layout_weight="1"
             android:layout_width="wrap_content"
