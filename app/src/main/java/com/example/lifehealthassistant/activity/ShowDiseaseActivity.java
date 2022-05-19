@@ -29,7 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShowDiseaseActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private List<Disease> diseaseList=new ArrayList<>();
     private DiseaseService service;
     private EditText select_edit;
@@ -38,7 +38,7 @@ public class ShowDiseaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_disease);
-        userid=getIntent().getIntExtra("userid",userid);
+        userid=getIntent().getStringExtra("userid");
         String typename=getIntent().getStringExtra("typename");
         System.out.println(typename);
         select_edit=(EditText)findViewById(R.id.select_edit);
@@ -58,7 +58,7 @@ public class ShowDiseaseActivity extends AppCompatActivity {
 
 
     }
-    public static void actionStart(Context context, int id,String typename){
+    public static void actionStart(Context context, String id,String typename){
         Intent intent=new Intent(context,ShowDiseaseActivity.class);
         intent.putExtra("userid",id);
         intent.putExtra("typename",typename);

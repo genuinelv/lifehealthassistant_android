@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lifehealthassistant.R;
 import com.example.lifehealthassistant.bean.Diet;
@@ -37,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private TextView username_show_text;
     private TextView usersex_show_text;
     private ImageView userpic_show_image;
@@ -46,7 +47,7 @@ public class UserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
         username_show_text=(TextView) findViewById(R.id.username_show_text);
         usersex_show_text=(TextView) findViewById(R.id.usersex_show_text);
         userpic_show_image=(ImageView) findViewById(R.id.userpic_show_image);
@@ -135,7 +136,7 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context, UserActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
@@ -153,15 +154,17 @@ public class UserActivity extends AppCompatActivity {
                 //生成接口对象
                 UserInfoService service = retrofit.create(UserInfoService.class);
                 //调用接口方法返回Call对象
-                final Call<Re<String>> call2 = service.deleteById(userid);
-                call2.enqueue(new Callback<Re<String>>() {
+                final Call<Re> call2 = service.deleteById(userid);
+                call2.enqueue(new Callback<Re>() {
                     @Override
-                    public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                    public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                         System.out.println(response.body());
+                        if(response.body().getMessage()!=null)
+                            Toast.makeText(UserActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
-                    public void onFailure(Call<Re<String>> call, Throwable t) {
+                    public void onFailure(Call<Re> call, Throwable t) {
 
                     }
                 });
@@ -197,6 +200,45 @@ public class UserActivity extends AppCompatActivity {
     }
     public void onPerson3(View view){
         UserActivity.actionStart(UserActivity.this,userid);
+    }
+
+    public void onBindEmail(View view){
+        Log.d("lzn", "onBindEmail: "+userid);
+        CodeActivity.actionStart(UserActivity.this,userid,1,null);
+    }
+    public void onUpdatePs(View view){
+        Log.d("lzn", "onUpdatePs: 修改密码操作");
+        //创建Retrofit对象
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .build();
+        //生成接口对象
+        UserInfoService service = retrofit.create(UserInfoService.class);
+        //调用接口方法返回Call对象
+        final Call<Re<String>> call2 = service.getps(userid);
+        //发布异步请求
+        call2.enqueue(new Callback<Re<String>>() {
+
+            @Override
+            public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                if(response.body()==null)
+                    Log.d("lzn","666666666");
+                Log.d("lzn",response.body().toString());
+                String email=response.body().getData();
+                if(email==null){
+                    CodeActivity.actionStart(UserActivity.this,userid,4,null);
+                }
+                else{
+                    CodeActivity.actionStart(UserActivity.this,userid,2,email);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Re<String>> call, Throwable t) {}
+        });
+
+
     }
 
 }

@@ -1,7 +1,9 @@
 package com.example.lifehealthassistant.bean;
 
 
-public class Diet {
+import java.io.Serializable;
+
+public class Diet implements Serializable {
 
 
     private String datetime;

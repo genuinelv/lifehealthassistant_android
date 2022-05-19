@@ -14,9 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lifehealthassistant.R;
+import com.example.lifehealthassistant.bean.Diet;
 import com.example.lifehealthassistant.bean.Disease;
 import com.example.lifehealthassistant.bean.Re;
 import com.example.lifehealthassistant.config.ServerConfiguration;
+import com.example.lifehealthassistant.service.DietService;
 import com.example.lifehealthassistant.service.DiseaseService;
 import com.google.gson.Gson;
 
@@ -32,48 +34,52 @@ import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ShowDiseaseDiActivity extends AppCompatActivity {
-
+public class ShowDietDiActivity extends AppCompatActivity {
 
     private String userid;
-    private Disease disease;
+    private Diet diet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_disease_detail);
+        setContentView(R.layout.activity_show_diet_di);
         userid=getIntent().getStringExtra("userid");
-        disease=(Disease) getIntent().getSerializableExtra("disease");
-        TextView datestart_text2=(TextView) findViewById(R.id.datestart_text2);
-        TextView dateend_text2=(TextView) findViewById(R.id.dateend_text2);
-        TextView diseasename_text2=(TextView) findViewById(R.id.diseasename_text2);
-        TextView symptom_text2=(TextView) findViewById(R.id.symptom_text2);
-        TextView medicine_text2=(TextView) findViewById(R.id.medicine_text2);
+        diet=(Diet) getIntent().getSerializableExtra("diet");
 
-        datestart_text2.setText(disease.getDatestart());
-        dateend_text2.setText(disease.getDateend());
-        diseasename_text2.setText(disease.getDiseasename());
-        symptom_text2.setText(disease.getSymptom());
-        medicine_text2.setText(disease.getMedicine());
-        ImageView sym_pic2=(ImageView) findViewById(R.id.sym_pic2);
-        ImageView med_pic2=(ImageView) findViewById(R.id.med_pic2);
+        TextView date_text_show_di=(TextView) findViewById(R.id.datestart_text2);
+        TextView dietname_text_show_di=(TextView) findViewById(R.id.dateend_text2);
+        TextView time_text_show_di=(TextView) findViewById(R.id.diseasename_text2);
+        TextView food_text_show_di=(TextView) findViewById(R.id.symptom_text2);
+
+        date_text_show_di.setText(diet.getDatetime().split(" ")[0]);
+        dietname_text_show_di.setText(diet.getDietname());
+        time_text_show_di.setText(diet.getDatetime().split(" ")[1]);
+        food_text_show_di.setText(diet.getFood());
+
+
+        ImageView picture1_show_di=(ImageView) findViewById(R.id.picture1_show_di);
+        ImageView picture2_show_di=(ImageView) findViewById(R.id.picture2_show_di);
+        ImageView picture3_show_di=(ImageView) findViewById(R.id.picture3_show_di);
 
         new Thread(new Runnable() {
             @Override
             public void run() {
                 URL url = null;
-                for(int i=0;i<2;i++){
+                for(int i=0;i<3;i++){
                     try {
                         String reallyname;
                         if(i==0){
-                            reallyname=disease.getSympic().split("\\\\")[2];
+                            reallyname=diet.getPicture1().split("\\\\")[2];
+                        }
+                        else if(i==1) {
+                            reallyname=diet.getPicture2().split("\\\\")[2];
                         }
                         else{
-                            reallyname=disease.getMedpic().split("\\\\")[2];
+                            reallyname=diet.getPicture3().split("\\\\")[2];
                         }
                         System.out.println(reallyname);
 
-                        url = new URL(ServerConfiguration.IP+"pic_disease/"+reallyname);
+                        url = new URL(ServerConfiguration.IP+"pic_diet/"+reallyname);
                         InputStream inputStream = url.openStream();
                         //　文件保存目录路径
                         String dirName = getExternalFilesDir(null).getPath() + "/MyDownLoad/";
@@ -109,7 +115,15 @@ public class ShowDiseaseDiActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    sym_pic2.setImageBitmap(bitmap);
+                                    picture1_show_di.setImageBitmap(bitmap);
+                                }
+                            });
+                        }
+                        else if(i==1) {
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    picture2_show_di.setImageBitmap(bitmap);
                                 }
                             });
                         }
@@ -117,7 +131,7 @@ public class ShowDiseaseDiActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    med_pic2.setImageBitmap(bitmap);
+                                    picture3_show_di.setImageBitmap(bitmap);
                                 }
                             });
                         }
@@ -132,29 +146,28 @@ public class ShowDiseaseDiActivity extends AppCompatActivity {
         }).start();
 
 
-    }
 
-    public static void actionStart(Context context, String id, Disease disease){
-        Intent intent=new Intent(context,ShowDiseaseDiActivity.class);
+    }
+    public static void actionStart(Context context, String id, Diet diet){
+        Intent intent=new Intent(context,ShowDietDiActivity.class);
         intent.putExtra("userid",id);
-        intent.putExtra("disease",disease);
+        intent.putExtra("diet",diet);
         context.startActivity(intent);
     }
-
     public void onDelete(View v){
         //创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
         //生成接口对象
-        DiseaseService service = retrofit.create(DiseaseService.class);
+        DietService service = retrofit.create(DietService.class);
         //调用接口方法返回Call对象
-        final Call<Re> call2 = service.delete(disease,userid);
+        final Call<Re> call2 = service.delete(diet,userid);
         call2.enqueue(new Callback<Re>() {
             @Override
             public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                 System.out.println(response.body());
                 if(response.body().getMessage()!=null)
-                    Toast.makeText(ShowDiseaseDiActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowDietDiActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -162,8 +175,6 @@ public class ShowDiseaseDiActivity extends AppCompatActivity {
 
             }
         });
-        ShowDiseaseActivity.actionStart(ShowDiseaseDiActivity.this,userid,null);
+        ShowDietAllActivity.actionStart(ShowDietDiActivity.this,userid,null);
     }
-
-
 }

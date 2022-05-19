@@ -33,7 +33,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private List<News.ResultDTO.DataDTO> dataDTOList=new ArrayList<>();
     private NewsService newsService;
 
@@ -41,11 +41,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        userid=getIntent().getIntExtra("userid",userid);
-//        WebView webView = (WebView) findViewById(R.id.news_web_view);
-//        webView.getSettings ( ).setJavaScriptEnabled(true) ;
-//        webView.setWebViewClient ( new WebViewClient() );
-//        webView.loadUrl("https://jiankang.163.com") ;
+        userid=getIntent().getStringExtra("userid");
+
         //创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://v.juhe.cn/toutiao/")
                 .addConverterFactory(GsonConverterFactory.create(new Gson())).build();
@@ -77,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public static void actionStart(Context context,int id){
+    public static void actionStart(Context context,String id){
         Intent intent=new Intent(context,MainActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);

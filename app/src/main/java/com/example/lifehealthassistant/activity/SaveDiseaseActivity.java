@@ -55,7 +55,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SaveDiseaseActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     public static final int TAKE_PHOTO=1;
     public static final int CHOOSE_PHOTO=2;
     private Uri imageUri;
@@ -86,7 +86,7 @@ public class SaveDiseaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_save_disease);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
 
         datestart_text=(TextView) findViewById(R.id.datestart_text);
         dateend_text=(TextView) findViewById(R.id.dateend_text);
@@ -98,7 +98,7 @@ public class SaveDiseaseActivity extends AppCompatActivity {
 
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context,SaveDiseaseActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
@@ -408,15 +408,17 @@ public class SaveDiseaseActivity extends AppCompatActivity {
                     adisease.setMedpic(getDisease.getMedpic());
 
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.saveDisease(adisease,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.saveDisease(adisease,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(SaveDiseaseActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });

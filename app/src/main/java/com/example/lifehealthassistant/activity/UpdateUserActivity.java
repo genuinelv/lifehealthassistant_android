@@ -49,14 +49,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UpdateUserActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     public static final int TAKE_PHOTO=1;
     public static final int CHOOSE_PHOTO=2;
     private Uri imageUri;
 
     private RadioGroup radioGroup;
     private EditText username_update_edittext;
-    private EditText password_update_edittext;
+    //private EditText password_update_edittext;
     private ImageView userpic_update_image;
 
     private String userphoto;
@@ -65,14 +65,14 @@ public class UpdateUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
         username_update_edittext=(EditText) findViewById(R.id.username_update_edittext);
-        password_update_edittext=(EditText) findViewById(R.id.password_update_edittext);
+        //password_update_edittext=(EditText) findViewById(R.id.password_update_edittext);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup2);
         userpic_update_image=(ImageView) findViewById(R.id.userpic_update_image);
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context, UpdateUserActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
@@ -228,13 +228,13 @@ public class UpdateUserActivity extends AppCompatActivity {
             }
         }
         String aaa=username_update_edittext.getText().toString();
-        String bbb=password_update_edittext.getText().toString();
+        //String bbb=password_update_edittext.getText().toString();
 
         User user=new User();
         user.setId(userid);
         user.setName(aaa);
         user.setSex(sex);
-        user.setPassword(bbb);
+        //user.setPassword(bbb);
         user.setPhoto(userphoto);
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
@@ -260,18 +260,20 @@ public class UpdateUserActivity extends AppCompatActivity {
                     user.setPhoto(getUser.getPhoto());
 
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.update(user,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.update(user,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
                             UserActivity.actionStart(UpdateUserActivity.this,userid);
                             //放在retrofit外。比如282行，跳回useractivity会无法显示修改的内容，大概网络是多线程的
                             //执行跳转功能的线程在上传修改信息的线程前完成，故无法显示最新的
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(UpdateUserActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });

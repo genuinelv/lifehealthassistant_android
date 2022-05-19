@@ -16,15 +16,15 @@ import retrofit2.http.Query;
 public interface HealthService {
 
     @POST("health")
-    public Call<Re<String>> saveHealth(@Body Health health, @Query("id") Integer id);
+    public Call<Re> saveHealth(@Body Health health, @Query("id") String id);
 
 
     @GET("health")
-    public Call<Re<List<Health>>> getAll(@Query("id") Integer id);
+    public Call<Re<List<Health>>> getAll(@Query("id") String id);
 
     @HTTP(method = "PUT",path = "health",hasBody = true)
-    public Call<Re<String>> updateHealth(@Body Health health, @Query("id") Integer id);
+    public Call<Re> updateHealth(@Body Health health, @Query("id") String id);
 
     @HTTP(method = "DELETE",path = "health",hasBody = true)
-    public Call<Re<String>> deleteHealth(@Body Health health, @Query("id") Integer id);
+    public Call<Re> deleteHealth(@Body Health health, @Query("id") String id);
 }

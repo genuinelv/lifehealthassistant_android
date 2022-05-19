@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HealthDetailActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private Health health;
     private String state;//show+delete,insert+load,update+load
 
@@ -54,7 +54,7 @@ public class HealthDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_detail);
-        userid=getIntent().getIntExtra("userid",userid);
+        userid=getIntent().getStringExtra("userid");
         health=(Health) getIntent().getSerializableExtra("health");
         if(health==null)
             health=new Health();
@@ -141,15 +141,17 @@ public class HealthDetailActivity extends AppCompatActivity {
                 if(state.equals("show")){//删除
 
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.deleteHealth(health,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.deleteHealth(health,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(HealthDetailActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });
@@ -179,15 +181,17 @@ public class HealthDetailActivity extends AppCompatActivity {
                     health.setBloodsugar(Double.parseDouble(bloodsugar_edit.getText().toString()));
 
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.updateHealth(health,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.updateHealth(health,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(HealthDetailActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });
@@ -203,15 +207,17 @@ public class HealthDetailActivity extends AppCompatActivity {
                     health.setBloodsugar(Double.parseDouble(bloodsugar_edit.getText().toString()));
 
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.saveHealth(health,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.saveHealth(health,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(HealthDetailActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });
@@ -224,7 +230,7 @@ public class HealthDetailActivity extends AppCompatActivity {
 
     }
 
-    public static void actionStart(Context context, int id, Health health,String state){
+    public static void actionStart(Context context, String id, Health health,String state){
         Intent intent=new Intent(context, HealthDetailActivity.class);
         intent.putExtra("userid",id);
         intent.putExtra("health",health);

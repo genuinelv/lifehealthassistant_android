@@ -30,14 +30,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShowHealthActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private List<Health> healthList=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_health);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
 
         //创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
@@ -68,7 +68,7 @@ public class ShowHealthActivity extends AppCompatActivity {
 
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context, ShowHealthActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);

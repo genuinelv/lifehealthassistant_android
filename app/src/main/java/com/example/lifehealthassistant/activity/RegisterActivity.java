@@ -62,7 +62,6 @@ public class RegisterActivity extends AppCompatActivity {
                 EditText userPasswordText = (EditText) findViewById(R.id.userPasswordRegisterText);
                 EditText userPasswordAgainText = (EditText) findViewById(R.id.userPasswordRegisterAgainText);
                 final String userIdInput = userIdText.getText().toString();
-                int idInteger = Integer.parseInt(userIdInput);
                 final String userPasswordInput = userPasswordText.getText().toString();
                 final String userPasswordAgainInput = userPasswordAgainText.getText().toString();
 
@@ -70,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                 UserInfoService service = retrofit.create(UserInfoService.class);
 
                 //调用接口方法返回Call对象
-                final Call<Re<User>> call = service.getById(idInteger);
+                final Call<Re<User>> call = service.getById(userIdInput);
                 //发布异步请求
                 call.enqueue(new Callback<Re<User>>() {
 
@@ -83,7 +82,7 @@ public class RegisterActivity extends AppCompatActivity {
                             if(response.body().getData()==null){
                                 //无人
                                 Toast.makeText(RegisterActivity.this, "没有该用户,可创建！", Toast.LENGTH_SHORT).show();
-                                registerTodb(idInteger,userPasswordInput,userPasswordAgainInput);
+                                registerTodb(userIdInput,userPasswordInput,userPasswordAgainInput);
                             }
                             else{//有人
                                 Toast.makeText(RegisterActivity.this, "该用户已存在！", Toast.LENGTH_SHORT).show();
@@ -114,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerTodb(int idInteger,String userPasswordInput,String userPasswordAgainInput){
+    private void registerTodb(String idInteger,String userPasswordInput,String userPasswordAgainInput){
         if (userPasswordInput.equals(userPasswordAgainInput)) {//两次密码一致
             User user=new User(idInteger,userPasswordInput,"系统用户","无",null);
 

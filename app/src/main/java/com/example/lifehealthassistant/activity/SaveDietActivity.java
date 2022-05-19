@@ -64,7 +64,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SaveDietActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
     private Spinner spin_dietname;
     private TextView datetext;
     private TextView timetext;
@@ -102,7 +102,7 @@ public class SaveDietActivity extends AppCompatActivity {
         picture2=(ImageView) findViewById(R.id.picture2);
         picture3=(ImageView) findViewById(R.id.picture3);
         editText_food=(EditText)findViewById(R.id.food_edittext);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
 
 
         spin_dietname=(Spinner) findViewById(R.id.spinner_dietname);
@@ -124,7 +124,7 @@ public class SaveDietActivity extends AppCompatActivity {
         });
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context,SaveDietActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
@@ -399,15 +399,17 @@ public class SaveDietActivity extends AppCompatActivity {
                     adiet.setPicture2(getDiet.getPicture2());
                     adiet.setPicture3(getDiet.getPicture3());
                     //调用接口方法返回Call对象
-                    final Call<Re<String>> call2 = service.saveDiet(adiet,userid);
-                    call2.enqueue(new Callback<Re<String>>() {
+                    final Call<Re> call2 = service.saveDiet(adiet,userid);
+                    call2.enqueue(new Callback<Re>() {
                         @Override
-                        public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                        public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
+                            if(response.body().getMessage()!=null)
+                                Toast.makeText(SaveDietActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
-                        public void onFailure(Call<Re<String>> call, Throwable t) {
+                        public void onFailure(Call<Re> call, Throwable t) {
 
                         }
                     });

@@ -97,12 +97,12 @@ public class News {
             private String title;
             private String date;
             private String category;
-            private String authorName;
+            private String author_name;
             private String url;
-            private String thumbnailPicS;
+            private String thumbnail_pic_s;
             private String isContent;
-            private String thumbnailPicS02;
-            private String thumbnailPicS03;
+            private String thumbnail_pic_s02;
+            private String thumbnail_pic_s03;
 
             @Override
             public String toString() {
@@ -111,12 +111,12 @@ public class News {
                         ", title='" + title + '\'' +
                         ", date='" + date + '\'' +
                         ", category='" + category + '\'' +
-                        ", authorName='" + authorName + '\'' +
+                        ", author_name='" + author_name + '\'' +
                         ", url='" + url + '\'' +
-                        ", thumbnailPicS='" + thumbnailPicS + '\'' +
+                        ", thumbnail_pic_s='" + thumbnail_pic_s + '\'' +
                         ", isContent='" + isContent + '\'' +
-                        ", thumbnailPicS02='" + thumbnailPicS02 + '\'' +
-                        ", thumbnailPicS03='" + thumbnailPicS03 + '\'' +
+                        ", thumbnail_pic_s02='" + thumbnail_pic_s02 + '\'' +
+                        ", thumbnail_pic_s03='" + thumbnail_pic_s03 + '\'' +
                         '}';
             }
 
@@ -152,12 +152,36 @@ public class News {
                 this.category = category;
             }
 
-            public String getAuthorName() {
-                return authorName;
+            public String getAuthor_name() {
+                return author_name;
             }
 
-            public void setAuthorName(String authorName) {
-                this.authorName = authorName;
+            public void setAuthor_name(String author_name) {
+                this.author_name = author_name;
+            }
+
+            public String getThumbnail_pic_s() {
+                return thumbnail_pic_s;
+            }
+
+            public void setThumbnail_pic_s(String thumbnail_pic_s) {
+                this.thumbnail_pic_s = thumbnail_pic_s;
+            }
+
+            public String getThumbnail_pic_s02() {
+                return thumbnail_pic_s02;
+            }
+
+            public void setThumbnail_pic_s02(String thumbnail_pic_s02) {
+                this.thumbnail_pic_s02 = thumbnail_pic_s02;
+            }
+
+            public String getThumbnail_pic_s03() {
+                return thumbnail_pic_s03;
+            }
+
+            public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
+                this.thumbnail_pic_s03 = thumbnail_pic_s03;
             }
 
             public String getUrl() {
@@ -168,13 +192,7 @@ public class News {
                 this.url = url;
             }
 
-            public String getThumbnailPicS() {
-                return thumbnailPicS;
-            }
 
-            public void setThumbnailPicS(String thumbnailPicS) {
-                this.thumbnailPicS = thumbnailPicS;
-            }
 
             public String getIsContent() {
                 return isContent;
@@ -184,21 +202,7 @@ public class News {
                 this.isContent = isContent;
             }
 
-            public String getThumbnailPicS02() {
-                return thumbnailPicS02;
-            }
 
-            public void setThumbnailPicS02(String thumbnailPicS02) {
-                this.thumbnailPicS02 = thumbnailPicS02;
-            }
-
-            public String getThumbnailPicS03() {
-                return thumbnailPicS03;
-            }
-
-            public void setThumbnailPicS03(String thumbnailPicS03) {
-                this.thumbnailPicS03 = thumbnailPicS03;
-            }
         }
     }
 }

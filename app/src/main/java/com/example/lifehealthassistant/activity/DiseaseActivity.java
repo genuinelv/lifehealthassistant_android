@@ -11,16 +11,16 @@ import com.example.lifehealthassistant.R;
 
 public class DiseaseActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disease);
-        userid=getIntent().getIntExtra("userid",userid);
+        userid=getIntent().getStringExtra("userid");
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context,DiseaseActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);

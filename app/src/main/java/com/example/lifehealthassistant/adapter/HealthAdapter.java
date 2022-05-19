@@ -19,9 +19,9 @@ import java.util.List;
 public class HealthAdapter extends RecyclerView.Adapter<HealthAdapter.ViewHolder>{
 
     private List<Health> healthList;
-    private int userid;
+    private String userid;
 
-    public HealthAdapter(List<Health> healthList,int userid){
+    public HealthAdapter(List<Health> healthList,String userid){
 
         this.healthList=healthList;
         this.userid=userid;

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lifehealthassistant.R;
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     private CheckBox rememberPass;
+    private EditText userIdText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +45,18 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         sharedPreferences= PreferenceManager.getDefaultSharedPreferences(this);
         rememberPass=(CheckBox)findViewById(R.id.remember_pass);
-        EditText userIdText = (EditText) findViewById(R.id.userIdLoginText);
+        userIdText = (EditText) findViewById(R.id.userIdLoginText);
         EditText userPasswordText = (EditText) findViewById(R.id.userPasswordLoginText);
+        TextView getPS_text=(TextView)findViewById(R.id.getPS_text);
+        getPS_text.getPaint().setFlags(Paint. UNDERLINE_TEXT_FLAG ); //下划线
+        getPS_text.getPaint().setAntiAlias(true);//抗锯齿
 
         Log.d("lzn", "onCreate: "+ServerConfiguration.IP);
         boolean isRemember=sharedPreferences.getBoolean("remember_password",false);
         if(isRemember){
-            int account=sharedPreferences.getInt("account",1);
+            String account=sharedPreferences.getString("account","");
             String passw=sharedPreferences.getString("password","");
-            userIdText.setText(String.valueOf(account));
+            userIdText.setText(account);
             userPasswordText.setText(passw);
             rememberPass.setChecked(true);
 
@@ -63,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 final String userIdInput = userIdText.getText().toString();
-                int idInteger=Integer.parseInt(userIdInput);
                 final String userPasswordInput = userPasswordText.getText().toString();
                 Log.d("lzn",userIdInput+"++++"+userPasswordInput);
 
@@ -75,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                 UserInfoService service = retrofit.create(UserInfoService.class);
 
                 //调用接口方法返回Call对象
-                final Call<Re<User>> call = service.getById(idInteger);
+                final Call<Re<User>> call = service.getById(userIdInput);
                 //发布异步请求
                 call.enqueue(new Callback<Re<User>>() {
 
@@ -99,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
                                     editor=sharedPreferences.edit();
                                     if(rememberPass.isChecked()){
                                         editor.putBoolean("remember_password",true);
-                                        editor.putInt("account",idInteger);
+                                        editor.putString("account",userIdInput);
                                         editor.putString("password",pwdGet);
                                     }
                                     else
@@ -107,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     editor.commit();
 
-                                    MainActivity.actionStart(LoginActivity.this,idInteger);
+                                    MainActivity.actionStart(LoginActivity.this,userIdInput);
 
                                 } else {//密码错误
                                     Toast.makeText(LoginActivity.this, "密码错误！", Toast.LENGTH_SHORT).show();
@@ -139,6 +144,68 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void onGetPS(View view){
+        final String userIdInput = userIdText.getText().toString();
+        if(userIdInput==null){
+            Toast.makeText(LoginActivity.this, "没有输入用户名！", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        //创建Retrofit对象
+        Retrofit retrofit = new Retrofit.Builder().baseUrl(ServerConfiguration.IP)
+                .addConverterFactory(GsonConverterFactory.create(new Gson()))
+                .build();
+        //生成接口对象
+        UserInfoService service = retrofit.create(UserInfoService.class);
+
+        //调用接口方法返回Call对象
+        final Call<Re<User>> call = service.getById(userIdInput);
+        //发布异步请求
+        call.enqueue(new Callback<Re<User>>() {
+
+            @Override
+            public void onResponse(Call<Re<User>> call, retrofit2.Response<Re<User>> response) {
+                if(response.body()==null)
+                    Log.d("lzn","666666666");
+                Log.d("lzn",response.body().toString());
+                if(response.body().getFlag()){
+                    if(response.body().getData()==null){
+                        //无人
+                        Toast.makeText(LoginActivity.this, "没有该用户！", Toast.LENGTH_SHORT).show();
+                    }
+                    else{//有人
+                        //调用接口方法返回Call对象
+                        final Call<Re<String>> call2 = service.getps(userIdInput);
+                        //发布异步请求
+                        call2.enqueue(new Callback<Re<String>>() {
+
+                            @Override
+                            public void onResponse(Call<Re<String>> call, retrofit2.Response<Re<String>> response) {
+                                if(response.body()==null)
+                                    Log.d("lzn","666666666");
+                                Log.d("lzn",response.body().toString());
+                                if(response.body().getMessage()!=null)
+                                    Toast.makeText(LoginActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Re<String>> call, Throwable t) {}
+                        });
+                    }
+
+                }else{
+                    //查找失败，请重试
+                    Toast.makeText(LoginActivity.this, "请重试！", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Re<User>> call, Throwable t) {}
+        });
+
     }
 
 }

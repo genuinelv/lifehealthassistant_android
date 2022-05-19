@@ -23,16 +23,16 @@ public interface DiseaseService {
     public Call<Re<Disease>> saveDiseasePic(@Part List<MultipartBody.Part> parts);
 
     @POST("disease/save_disease")
-    public Call<Re<String>> saveDisease(@Body Disease disease, @Query("id") Integer id);
+    public Call<Re> saveDisease(@Body Disease disease, @Query("id") String id);
 
     @GET("disease/get_diseasebyname")
-    public Call<Re<List<Disease>>> getByName(@Query("id") Integer id, @Query("diseasename") String name);
+    public Call<Re<List<Disease>>> getByName(@Query("id") String id, @Query("diseasename") String name);
 
     @GET("disease/get_diseaseall")
-    public Call<Re<List<Disease>>> getAll(@Query("id") Integer id);
+    public Call<Re<List<Disease>>> getAll(@Query("id") String id);
 
 
     @HTTP(method = "DELETE",path = "disease/delete_disease",hasBody = true)
-    public Call<Re<String>> delete(@Body Disease disease, @Query("id") Integer id);
+    public Call<Re> delete(@Body Disease disease, @Query("id") String id);
 
 }

@@ -66,13 +66,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onUpdateUInfo"
-                android:text="修改个人信息 " />
+                android:text="修改个人信息" />
             <Button
                 android:id="@+id/show_health_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onShowHealth"
                 android:text="健康档案" />
+            <Button
+                android:id="@+id/bindemail_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onBindEmail"
+                android:text="绑定邮箱" />
+            <Button
+                android:id="@+id/password_update_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="onUpdatePs"
+                android:text="修改密码" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

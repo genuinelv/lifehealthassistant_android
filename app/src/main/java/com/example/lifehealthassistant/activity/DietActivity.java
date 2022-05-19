@@ -12,16 +12,16 @@ import com.example.lifehealthassistant.R;
 
 public class DietActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diet);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context,DietActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
@@ -34,6 +34,10 @@ public class DietActivity extends AppCompatActivity {
 
     public void onShowDiet(View v){
         ShowDietActivity.actionStart(DietActivity.this,userid);
+    }
+
+    public void onDietAll(View v){
+        ShowDietAllActivity.actionStart(DietActivity.this,userid,null);
     }
 
     public void onFood(View v){

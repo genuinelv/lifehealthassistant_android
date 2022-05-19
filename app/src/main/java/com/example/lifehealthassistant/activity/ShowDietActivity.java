@@ -43,7 +43,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShowDietActivity extends AppCompatActivity {
 
-    private int userid;
+    private String userid;
 
     private String date_all;
     private String dietname_all;
@@ -59,7 +59,7 @@ public class ShowDietActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_diet);
-        userid=getIntent().getIntExtra("userid",1);
+        userid=getIntent().getStringExtra("userid");
         timetext=(TextView)findViewById(R.id.time_text2);
         foodtext=(TextView)findViewById(R.id.food_text);
         picture1=(ImageView) findViewById(R.id.picture1_2);
@@ -85,7 +85,7 @@ public class ShowDietActivity extends AppCompatActivity {
         });
     }
 
-    public static void actionStart(Context context, int id){
+    public static void actionStart(Context context, String id){
         Intent intent=new Intent(context,ShowDietActivity.class);
         intent.putExtra("userid",id);
         context.startActivity(intent);
