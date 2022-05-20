@@ -22,4 +22,10 @@ public class FoodActivity extends AppCompatActivity {
         webView.setWebViewClient ( new WebViewClient() );
         webView.loadUrl("https://www.meishij.net/shicai/") ;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

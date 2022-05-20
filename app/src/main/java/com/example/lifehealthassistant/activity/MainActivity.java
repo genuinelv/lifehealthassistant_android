@@ -3,6 +3,7 @@ package com.example.lifehealthassistant.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Context;
 import android.content.Intent;
@@ -42,6 +43,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         userid=getIntent().getStringExtra("userid");
+
+        SwipeRefreshLayout swip_refresh_layout=findViewById(R.id.swipeRefresh);
+        swip_refresh_layout.setColorSchemeResources(R.color.teal_700);
+        swip_refresh_layout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                MainActivity.actionStart(MainActivity.this,userid);
+            }
+        });
+
+
 
         //创建Retrofit对象
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://v.juhe.cn/toutiao/")
@@ -85,9 +97,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onDiet(View v){
-        DietActivity.actionStart(MainActivity.this,userid);
-    }
+
 
     public void onExercise(View v){
         Intent intent = new Intent(MainActivity.this,ExerciseActivity.class);
@@ -97,13 +107,21 @@ public class MainActivity extends AppCompatActivity {
     public void onMain1(View v){
         Intent intent = new Intent(MainActivity.this,MainActivity.class);
         startActivity(intent);
+        finish();
     }
     public void onFunction1(View v){
         FunctionActivity.actionStart(MainActivity.this,userid);
+        finish();
     }
 
     public void onPerson1(View v){
         UserActivity.actionStart(MainActivity.this,userid);
+        finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

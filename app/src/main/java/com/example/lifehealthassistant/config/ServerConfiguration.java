@@ -5,6 +5,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class ServerConfiguration {
-    public static final String IP = "http://192.168.167.71/";//服务器地址
+    public static final String IP = "http://192.168.254.71/";//服务器地址
 
 }

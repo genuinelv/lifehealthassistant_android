@@ -2,62 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:background="@drawable/wallhaven_1j3x31"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="match_parent"/>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="昵称"/>
-
-        <EditText
-            android:id="@+id/username_update_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="性别"/>
-
-        <RadioGroup
-            android:id="@+id/radioGroup2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RadioButton
-                android:id="@+id/btnMan2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="男"
-                android:checked="true"/>
-
-            <RadioButton
-                android:id="@+id/btnWoman2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="女"/>
-        </RadioGroup>
-    </LinearLayout>
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -65,38 +20,107 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:text="头像"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="昵称"/>
 
-            <Button
+            <EditText
+                android:id="@+id/username_update_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="拍照"
-                android:onClick="onCameraForUser"/>
-            <Button
+                android:text="性别"/>
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="图库"
-                android:onClick="onPhotoForUser"/>
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/btnMan2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="男"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/btnWoman2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="女"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="头像"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="拍照"
+                    android:background="@drawable/divide_linearlayout"
+                    android:backgroundTint="#D38C22"
+                    android:onClick="onCameraForUser"/>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="图库"
+                    android:background="@drawable/divide_linearlayout"
+                    android:backgroundTint="#D38C22"
+                    android:onClick="onPhotoForUser"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/userpic_update_image"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/userpic_update_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"/>
 
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="保存"
+            android:background="@drawable/divide_linearlayout"
+            android:backgroundTint="#D38C22"
+            android:onClick="onLoadUser"/>
     </LinearLayout>
 
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="保存"
-        android:onClick="onLoadUser"/>
-
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

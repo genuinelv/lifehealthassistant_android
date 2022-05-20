@@ -52,4 +52,10 @@ public class BMIActivity extends AppCompatActivity {
         }
         bmi_text.setText("您的健康指数为："+String.format("%.2f", BMI)+"。"+rec);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

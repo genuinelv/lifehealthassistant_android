@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.lifehealthassistant.R;
 import com.example.lifehealthassistant.adapter.DietAdapter;
@@ -33,8 +34,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ShowDietAllActivity extends AppCompatActivity {
     private String userid;
     private List<Diet> dietList=new ArrayList<>();
+    private int count;
     private DietService service;
     private EditText select_dietall_edit;
+    private TextView foodcount_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,10 @@ public class ShowDietAllActivity extends AppCompatActivity {
 
         userid=getIntent().getStringExtra("userid");
         String typename=getIntent().getStringExtra("typename");
+        count=getIntent().getIntExtra("count",0);
         System.out.println(typename);
+        foodcount_text=(TextView)findViewById(R.id.foodcount_text);
+
         select_dietall_edit=(EditText)findViewById(R.id.select_dietall_edit);
         select_dietall_edit.setText(typename);
         //创建Retrofit对象
@@ -57,12 +63,14 @@ public class ShowDietAllActivity extends AppCompatActivity {
         }
         else{
             initDietListByFood(typename);
+
         }
     }
-    public static void actionStart(Context context, String id, String typename){
+    public static void actionStart(Context context, String id, String typename,int count){
         Intent intent=new Intent(context,ShowDietAllActivity.class);
         intent.putExtra("userid",id);
         intent.putExtra("typename",typename);
+        intent.putExtra("count",count);
         context.startActivity(intent);
     }
     private void initDietListByFood(String typename) {
@@ -80,6 +88,7 @@ public class ShowDietAllActivity extends AppCompatActivity {
                 recyclerView.setLayoutManager(layoutManager);
                 DietAdapter dietAdapter =new DietAdapter(dietList,userid);
                 recyclerView.setAdapter(dietAdapter);
+                foodcount_text.setText("您记录的饮食中，总共"+count+"餐的情况下，有"+dietList.size()+"餐食用了"+typename+"。");
             }
 
             @Override
@@ -116,8 +125,15 @@ public class ShowDietAllActivity extends AppCompatActivity {
     public void onSelectDietAll(View view){
         String selectitem=select_dietall_edit.getText().toString();
         System.out.println(selectitem);
-        ShowDietAllActivity.actionStart(ShowDietAllActivity.this,userid,selectitem);
+        ShowDietAllActivity.actionStart(ShowDietAllActivity.this,userid,selectitem,dietList.size());
+        finish();
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

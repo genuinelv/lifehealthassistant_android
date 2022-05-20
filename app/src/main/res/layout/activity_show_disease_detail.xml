@@ -2,10 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -21,12 +24,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/buttonPressed"
                     android:text="开始日期"/>
 
 
                 <TextView
+                    android:gravity="center"
+                    android:textColor="@color/buttonPressed"
+                    android:layout_weight="1"
                     android:id="@+id/datestart_text2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     />
 
@@ -38,13 +45,17 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="结束日期"/>
 
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:id="@+id/dateend_text2"
+                    android:gravity="center"
+                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -59,15 +70,18 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-
+                    android:textColor="@color/buttonPressed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="病名"/>
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:id="@+id/diseasename_text2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_weight="1"
                     android:text="病名"/>
 
 
@@ -80,10 +94,12 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:text="症状"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:id="@+id/symptom_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,15 +107,17 @@
 
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:text="症状图片"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
 
                 <ImageView
+
                     android:id="@+id/sym_pic2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center_horizontal"/>
 
 
@@ -111,10 +129,12 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:text="采取药物"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:id="@+id/medicine_text2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -122,6 +142,7 @@
 
 
                 <TextView
+                    android:textColor="@color/buttonPressed"
                     android:text="药物图片"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -129,23 +150,28 @@
 
                 <ImageView
                     android:id="@+id/med_pic2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_gravity="center_horizontal"/>
 
 
             </LinearLayout>
 
             <Button
+                android:layout_gravity="center_horizontal"
                 android:id="@+id/delete_disease"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="删除"
+                android:background="@drawable/divide_linearlayout"
+                android:backgroundTint="#463191"
                 android:onClick="onDelete"
                 />
 
         </LinearLayout>
     </ScrollView>
-
+    <TextView
+        android:layout_width="10dp"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

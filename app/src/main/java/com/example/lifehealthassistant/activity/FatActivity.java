@@ -57,4 +57,10 @@ public class FatActivity extends AppCompatActivity {
 
         fat_text.setText("您的体脂率为："+String.format("%.2f", fat)+"%。");
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

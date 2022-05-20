@@ -112,7 +112,9 @@ public class LoginActivity extends AppCompatActivity {
 
                                     editor.commit();
 
-                                    MainActivity.actionStart(LoginActivity.this,userIdInput);
+                                    //MainActivity.actionStart(LoginActivity.this,userIdInput);
+                                    UserActivity.actionStart(LoginActivity.this,userIdInput);
+                                    finish();
 
                                 } else {//密码错误
                                     Toast.makeText(LoginActivity.this, "密码错误！", Toast.LENGTH_SHORT).show();

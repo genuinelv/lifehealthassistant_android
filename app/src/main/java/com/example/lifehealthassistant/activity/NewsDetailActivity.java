@@ -28,4 +28,10 @@ public class NewsDetailActivity extends AppCompatActivity {
         intent.putExtra("url",url);
         context.startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

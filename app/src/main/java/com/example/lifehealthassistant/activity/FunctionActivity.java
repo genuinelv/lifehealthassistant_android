@@ -32,7 +32,7 @@ public class FunctionActivity extends AppCompatActivity {
         ShowDietActivity.actionStart(FunctionActivity.this,userid);
     }
     public void onShowDietByFood_func(View v){
-        ShowDietAllActivity.actionStart(FunctionActivity.this,userid,null);
+        ShowDietAllActivity.actionStart(FunctionActivity.this,userid,null,0);
     }
     public void onFood_func(View v){
         Intent intent = new Intent(FunctionActivity.this,FoodActivity.class);
@@ -40,6 +40,7 @@ public class FunctionActivity extends AppCompatActivity {
     }
     public void onSaveDisease_func(View v){
         SaveDiseaseActivity.actionStart(FunctionActivity.this,userid);
+
     }
     public void onShowDisease_func(View v){
         ShowDiseaseActivity.actionStart(FunctionActivity.this,userid,null);
@@ -54,12 +55,15 @@ public class FunctionActivity extends AppCompatActivity {
     }
     public void onMain2(View view){
         MainActivity.actionStart(FunctionActivity.this,userid);
+        finish();
     }
     public void onFunction2(View view){
-        DiseaseActivity.actionStart(FunctionActivity.this,userid);
+        FunctionActivity.actionStart(FunctionActivity.this,userid);
+        finish();
     }
     public void onPerson2(View view){
         UserActivity.actionStart(FunctionActivity.this,userid);
+        finish();
     }
 
 }

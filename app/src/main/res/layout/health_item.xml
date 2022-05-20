@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
+    android:background="#4888847E"
     android:layout_height="wrap_content">
 
     <TextView
@@ -10,6 +11,7 @@
         android:layout_height="100dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
+        android:textColor="@color/black"
         android:textSize="40sp"
         android:text="时间"/>
 

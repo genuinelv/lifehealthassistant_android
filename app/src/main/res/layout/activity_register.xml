@@ -75,8 +75,8 @@
             android:id="@+id/register_button"
             android:layout_width="80dp"
             android:layout_height="40dp"
-
-            android:background="#1EAFE9"
+            android:background="@drawable/divide_linearlayout"
+            android:backgroundTint="#1EAFE9"
             android:text="确定"
             android:textColor="@color/black"
             android:textSize="14sp" />
@@ -86,7 +86,8 @@
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_marginLeft="140dp"
-            android:background="#1EAFE9"
+            android:background="@drawable/divide_linearlayout"
+            android:backgroundTint="#1EAFE9"
             android:text="取消"
             android:textColor="@color/black"
             android:textSize="14sp" />

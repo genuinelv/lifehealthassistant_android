@@ -165,6 +165,7 @@ public class SaveDietActivity extends AppCompatActivity {
     }
     private void set_time_all(String timeget){
         time_all=timeget;
+        timetext.setText(timeget);
     }
     private String formatTime(int hourOfDay, int minute) {
         return String.format(Locale.getDefault(), "%02d:%02d:00", hourOfDay, minute);
@@ -406,6 +407,8 @@ public class SaveDietActivity extends AppCompatActivity {
                             System.out.println(response.body());
                             if(response.body().getMessage()!=null)
                                 Toast.makeText(SaveDietActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                            FunctionActivity.actionStart(SaveDietActivity.this,userid);
+                            finish();
                         }
 
                         @Override
@@ -431,4 +434,9 @@ public class SaveDietActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

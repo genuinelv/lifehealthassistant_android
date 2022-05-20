@@ -1,6 +1,7 @@
 package com.example.lifehealthassistant.adapter;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Message;
@@ -54,10 +55,12 @@ public class DataDTOAdapter extends RecyclerView.Adapter<DataDTOAdapter.ViewHold
         final DataDTOAdapter.ViewHolder holder = new DataDTOAdapter.ViewHolder(view);
 
         holder.datadtoView.setOnClickListener(new View.OnClickListener() {
+             @SuppressLint("ResourceAsColor")
              @Override
              public void onClick(View v) {
                  int position=holder.getAdapterPosition();
                  News.ResultDTO.DataDTO dataDTO=datedtoList.get(position);
+                 holder.title_datadto_item.setTextColor(R.color.themeRed);
                  NewsDetailActivity.actionStart(v.getContext(),dataDTO.getUrl());
                  //HealthDetailActivity.actionStart(v.getContext(),userid,health,"show");
              }
@@ -70,12 +73,18 @@ public class DataDTOAdapter extends RecyclerView.Adapter<DataDTOAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         News.ResultDTO.DataDTO dataDTO=datedtoList.get(position);
-        Log.d("lzn", "onBindViewHolder: "+dataDTO.getThumbnail_pic_s());
         holder.title_datadto_item.setText(dataDTO.getTitle());
         holder.author_datadto_item.setText(dataDTO.getAuthor_name());
         holder.date_datadto_item.setText(dataDTO.getDate());
         holder.pic_datadto_item.getSettings ( ).setJavaScriptEnabled(true) ;
-        holder.pic_datadto_item.loadUrl(dataDTO.getThumbnail_pic_s()) ;
+        if(dataDTO.getThumbnail_pic_s()==null||dataDTO.getThumbnail_pic_s().equals("")){
+            holder.pic_datadto_item.loadUrl(ServerConfiguration.IP+"pic_diet/blank.png") ;
+            Log.d("lzn", "onBindViewHolder: "+ServerConfiguration.IP+"pic_diet/blank.png");
+        }
+        else{
+            holder.pic_datadto_item.loadUrl(dataDTO.getThumbnail_pic_s()) ;
+            Log.d("lzn", "onBindViewHolder: "+dataDTO.getThumbnail_pic_s());
+        }
         holder.pic_datadto_item.setWebViewClient ( new WebViewClient() {
             /**
              * 是否在 WebView 内加载页面

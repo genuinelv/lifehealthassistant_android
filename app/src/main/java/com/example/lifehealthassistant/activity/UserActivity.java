@@ -170,6 +170,7 @@ public class UserActivity extends AppCompatActivity {
                 });
                 Intent intent = new Intent(UserActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -184,6 +185,7 @@ public class UserActivity extends AppCompatActivity {
 
     public void onUpdateUInfo(View v){
         UpdateUserActivity.actionStart(UserActivity.this,userid);
+        finish();
     }
     public void onShowHealth(View v){
         ShowHealthActivity.actionStart(UserActivity.this,userid);
@@ -191,20 +193,25 @@ public class UserActivity extends AppCompatActivity {
     public void onExit(View v){
         Intent intent = new Intent(UserActivity.this,LoginActivity.class);
         startActivity(intent);
+        finish();
     }
     public void onMain3(View view){
-        MainActivity.actionStart(UserActivity.this,userid);
+
+        MainActivity.actionStart(UserActivity.this,userid);finish();
     }
     public void onFunction3(View view){
         FunctionActivity.actionStart(UserActivity.this,userid);
+        finish();
     }
     public void onPerson3(View view){
         UserActivity.actionStart(UserActivity.this,userid);
+        finish();
     }
 
     public void onBindEmail(View view){
         Log.d("lzn", "onBindEmail: "+userid);
         CodeActivity.actionStart(UserActivity.this,userid,1,null);
+
     }
     public void onUpdatePs(View view){
         Log.d("lzn", "onUpdatePs: 修改密码操作");
@@ -241,4 +248,9 @@ public class UserActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

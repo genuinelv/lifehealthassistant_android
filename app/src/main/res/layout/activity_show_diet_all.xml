@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:background="@drawable/wallhaven_qd6g6r"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -18,6 +19,7 @@
             <EditText
                 android:id="@+id/select_dietall_edit"
                 android:layout_width="0dp"
+                android:hint="请输入要查询的食物"
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
             <Button
@@ -25,11 +27,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onSelectDietAll"
+                android:background="@drawable/divide_linearlayout"
+                android:backgroundTint="#2C9EC1"
                 android:text="查询"/>
 
         </LinearLayout>
 
-
+        <TextView
+            android:id="@+id/foodcount_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/diet_recycler_view"

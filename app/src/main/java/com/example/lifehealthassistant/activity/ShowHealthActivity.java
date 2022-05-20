@@ -76,5 +76,13 @@ public class ShowHealthActivity extends AppCompatActivity {
 
     public void onSaveHealth(View v){
         HealthDetailActivity.actionStart(ShowHealthActivity.this,userid,null,"insert");
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        UserActivity.actionStart(ShowHealthActivity.this,userid);
+        finish();
     }
 }

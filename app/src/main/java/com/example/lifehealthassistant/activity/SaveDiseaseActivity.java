@@ -437,9 +437,13 @@ public class SaveDiseaseActivity extends AppCompatActivity {
 
 
         });
-        DiseaseActivity.actionStart(SaveDiseaseActivity.this,userid);
+        FunctionActivity.actionStart(SaveDiseaseActivity.this,userid);
+        finish();
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

@@ -51,6 +51,7 @@ public class ShowDietActivity extends AppCompatActivity {
     private Spinner spin_dietname;
     private TextView timetext;
     private TextView foodtext;
+    private TextView date_text2;
     private ImageView picture1;
     private ImageView picture2;
     private ImageView picture3;
@@ -65,6 +66,7 @@ public class ShowDietActivity extends AppCompatActivity {
         picture1=(ImageView) findViewById(R.id.picture1_2);
         picture2=(ImageView) findViewById(R.id.picture2_2);
         picture3=(ImageView) findViewById(R.id.picture3_2);
+        date_text2=(TextView)findViewById(R.id.date_text2);
 
         spin_dietname=(Spinner) findViewById(R.id.spinner_dietname2);
         String[]names=getResources().getStringArray(R.array.dietname);//建立数据源
@@ -107,6 +109,7 @@ public class ShowDietActivity extends AppCompatActivity {
             int dayOfMonth = dialog.getDatePicker().getDayOfMonth();
             //datetext.setText(formatDate(year, monthOfYear, dayOfMonth));
             date_all=formatDate(year, monthOfYear, dayOfMonth);
+
             // 关闭dialog
             dialog.dismiss();
         });
@@ -223,5 +226,11 @@ public class ShowDietActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

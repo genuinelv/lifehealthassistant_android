@@ -46,10 +46,10 @@ public class ShowDietDiActivity extends AppCompatActivity {
         userid=getIntent().getStringExtra("userid");
         diet=(Diet) getIntent().getSerializableExtra("diet");
 
-        TextView date_text_show_di=(TextView) findViewById(R.id.datestart_text2);
-        TextView dietname_text_show_di=(TextView) findViewById(R.id.dateend_text2);
-        TextView time_text_show_di=(TextView) findViewById(R.id.diseasename_text2);
-        TextView food_text_show_di=(TextView) findViewById(R.id.symptom_text2);
+        TextView date_text_show_di=(TextView) findViewById(R.id.date_text_show_di);
+        TextView dietname_text_show_di=(TextView) findViewById(R.id.dietname_text_show_di);
+        TextView time_text_show_di=(TextView) findViewById(R.id.time_text_show_di);
+        TextView food_text_show_di=(TextView) findViewById(R.id.food_text_show_di);
 
         date_text_show_di.setText(diet.getDatetime().split(" ")[0]);
         dietname_text_show_di.setText(diet.getDietname());
@@ -175,6 +175,13 @@ public class ShowDietDiActivity extends AppCompatActivity {
 
             }
         });
-        ShowDietAllActivity.actionStart(ShowDietDiActivity.this,userid,null);
+        ShowDietAllActivity.actionStart(ShowDietDiActivity.this,userid,null,0);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

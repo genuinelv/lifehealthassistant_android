@@ -7,6 +7,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:largeHeap = "true"
+        android:hardwareAccelerated = "false"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="生活健康助手"
@@ -45,12 +47,6 @@
             android:name=".activity.BMIActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ShowAlarmActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.SaveAlarmActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.ShowDiseaseDiActivity"
             android:exported="false" />
         <activity
@@ -58,9 +54,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.SaveDiseaseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DiseaseActivity"
             android:exported="false" />
         <activity
             android:name=".activity.ShowDietActivity"
@@ -91,9 +84,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.ExerciseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.DietActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"

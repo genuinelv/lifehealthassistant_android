@@ -5,6 +5,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:background="@drawable/wallhaven_qd6g6r"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,12 +20,15 @@
                 android:id="@+id/select_edit"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:hint="输入病名的全部或部分"
                 android:layout_weight="1" />
             <Button
                 android:id="@+id/select_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onSelect"
+                android:background="@drawable/divide_linearlayout"
+                android:backgroundTint="#2C9EC1"
                 android:text="查询"/>
 
         </LinearLayout>

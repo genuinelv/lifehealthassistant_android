@@ -266,6 +266,7 @@ public class UpdateUserActivity extends AppCompatActivity {
                         public void onResponse(Call<Re> call, retrofit2.Response<Re> response) {
                             System.out.println(response.body());
                             UserActivity.actionStart(UpdateUserActivity.this,userid);
+                            finish();
                             //放在retrofit外。比如282行，跳回useractivity会无法显示修改的内容，大概网络是多线程的
                             //执行跳转功能的线程在上传修改信息的线程前完成，故无法显示最新的
                             if(response.body().getMessage()!=null)
@@ -291,5 +292,11 @@ public class UpdateUserActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

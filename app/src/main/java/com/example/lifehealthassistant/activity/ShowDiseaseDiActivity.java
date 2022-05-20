@@ -163,7 +163,12 @@ public class ShowDiseaseDiActivity extends AppCompatActivity {
             }
         });
         ShowDiseaseActivity.actionStart(ShowDiseaseDiActivity.this,userid,null);
+        finish();
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

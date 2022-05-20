@@ -4,28 +4,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:background="#5CACBA"
+        android:gravity="center_vertical"
+        android:text="健康档案"
+        android:textSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
+            android:gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="日期"/>
 
-        <Button
-            android:id="@+id/datetime_health_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="选择日期"
-            />
         <TextView
+            android:layout_weight="1"
+            android:gravity="center"
             android:id="@+id/datetime_health_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             />
+        <Button
+            android:background="@drawable/calendar"
+            android:id="@+id/datetime_health_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
 
+            />
 
     </LinearLayout>
 
@@ -40,11 +50,13 @@
             android:text="年龄："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/age_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="岁"/>
@@ -62,11 +74,13 @@
             android:text="身高："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/height_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CM（厘米）"/>
@@ -84,11 +98,13 @@
             android:text="体重："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/weight_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="KG（公斤）"/>
@@ -106,11 +122,13 @@
             android:text="血压高压："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/bloodpressurehigh_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="mmHg"/>
@@ -128,11 +146,13 @@
             android:text="血压低压："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/bloodpressurelow_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="mmHg"/>
@@ -150,11 +170,13 @@
             android:text="血糖："/>
 
         <EditText
+            android:layout_weight="1"
             android:id="@+id/bloodsugar_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <TextView
+            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="mmol/l"/>
@@ -166,20 +188,31 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
         <Button
+            android:background="@drawable/divide_linearlayout"
+            android:backgroundTint="#7DC8AA"
             android:id="@+id/different_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
-
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
         <Button
+            android:background="@drawable/divide_linearlayout"
+            android:backgroundTint="#7DC8AA"
             android:id="@+id/different_button2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             />
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
 
     </LinearLayout>
 

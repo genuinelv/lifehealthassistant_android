@@ -10,11 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onSaveHealth"
+        android:background="@drawable/divide_linearlayout"
+        android:backgroundTint="#6728BF"
         android:text="新增健康档案"/>
 
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@drawable/wallhaven_qd6g6r"
         android:id="@+id/health_recycler_view"
         android:layout_weight="1"
         android:layout_width="match_parent"

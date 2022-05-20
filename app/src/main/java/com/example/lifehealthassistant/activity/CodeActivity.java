@@ -58,21 +58,21 @@ public class CodeActivity extends AppCompatActivity {
         Button code_button=(Button) findViewById(R.id.code_button);
         if(state==1){
             code_text.setText("邮箱：");
-            code_button.setText("获取验证码");
+            //code_button.setText("获取验证码");
         }
         else if(state==2){
             code_text.setText("邮箱：");
             code_edittext.setText(email);
             code_edittext.setEnabled(false);
-            code_button.setText("获取验证码");
+            //code_button.setText("获取验证码");
         }
         else if(state==3||state==5){
             code_text.setText("验证码：");
-            code_button.setText("验证");
+            //code_button.setText("验证");
         }
         else if(state==4){
             code_text.setText("密码：");
-            code_button.setText("修改");
+            //code_button.setText("修改");
         }
 
 
@@ -103,6 +103,7 @@ public class CodeActivity extends AppCompatActivity {
                     if(response.body().getMessage()!=null)
                         Toast.makeText(CodeActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     CodeActivity.actionStart(CodeActivity.this,userid,3,null);
+                    finish();
                 }
 
                 @Override
@@ -121,6 +122,7 @@ public class CodeActivity extends AppCompatActivity {
                     if(response.body().getMessage()!=null)
                         Toast.makeText(CodeActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     CodeActivity.actionStart(CodeActivity.this,userid,5,null);
+                    finish();
                 }
 
                 @Override
@@ -145,9 +147,11 @@ public class CodeActivity extends AppCompatActivity {
                         Toast.makeText(CodeActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     if(state==3){
                         UserActivity.actionStart(CodeActivity.this,userid);
+                        finish();
                     }
                     else {//5
                         CodeActivity.actionStart(CodeActivity.this,userid,4,null);
+                        finish();
                     }
                 }
 
@@ -172,6 +176,7 @@ public class CodeActivity extends AppCompatActivity {
                     if(response.body().getMessage()!=null)
                         Toast.makeText(CodeActivity.this, response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     UserActivity.actionStart(CodeActivity.this,userid);
+                    finish();
                 }
 
                 @Override
@@ -181,5 +186,11 @@ public class CodeActivity extends AppCompatActivity {
             });
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

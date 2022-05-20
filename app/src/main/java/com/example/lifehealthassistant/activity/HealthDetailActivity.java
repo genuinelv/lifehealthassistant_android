@@ -171,6 +171,7 @@ public class HealthDetailActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(state.equals("show")){//修改
                     HealthDetailActivity.actionStart(HealthDetailActivity.this,userid,health,"update");
+                    finish();
                 }
                 else if(state.equals("update")){//保存修改
                     health.setAge(Integer.parseInt(age_edit.getText().toString()));
@@ -239,5 +240,11 @@ public class HealthDetailActivity extends AppCompatActivity {
     }
     private String formatDate(int year, int monthOfYear, int dayOfMonth) {
         return year + "-" + String.format(Locale.getDefault(), "%02d-%02d", monthOfYear, dayOfMonth);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

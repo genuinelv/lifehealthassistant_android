@@ -115,11 +115,14 @@ public class ShowDiseaseActivity extends AppCompatActivity {
         String selectitem=select_edit.getText().toString();
         System.out.println(selectitem);
         ShowDiseaseActivity.actionStart(ShowDiseaseActivity.this,userid,selectitem);
+        finish();
 
 
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

@@ -53,7 +53,7 @@ public class HealthAdapter extends RecyclerView.Adapter<HealthAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull HealthAdapter.ViewHolder holder, int position) {
         Health health=healthList.get(position);
-        holder.datetime_health_item.setText(health.getDatetimehealth());
+        holder.datetime_health_item.setText(health.getDatetimehealth().split(" ")[0]);
     }
 
     @Override
