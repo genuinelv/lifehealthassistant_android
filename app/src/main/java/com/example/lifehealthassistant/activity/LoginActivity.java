@@ -70,6 +70,10 @@ public class LoginActivity extends AppCompatActivity {
 
                 final String userIdInput = userIdText.getText().toString();
                 final String userPasswordInput = userPasswordText.getText().toString();
+                if(userIdInput.length()>=30||userPasswordInput.length()>=16){
+                    Toast.makeText(LoginActivity.this, "用户名要在30位以内，密码要在16位以内", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Log.d("lzn",userIdInput+"++++"+userPasswordInput);
 
                 //创建Retrofit对象
@@ -97,9 +101,7 @@ public class LoginActivity extends AppCompatActivity {
                             else{//有人
                                 User u= response.body().getData();
                                 String pwdGet = u.getPassword();
-                                Log.d("lzn",pwdGet+"++++"+userPasswordInput);
                                 if (pwdGet.equals(userPasswordInput)) {//密码正确
-                                    //MainActivity.actionStart(LoginActivity.this,userNameInput,null);//将登录使用的用户名传给下一个活动MainActivity
                                     Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                     editor=sharedPreferences.edit();
                                     if(rememberPass.isChecked()){
@@ -109,11 +111,8 @@ public class LoginActivity extends AppCompatActivity {
                                     }
                                     else
                                         editor.clear();
-
                                     editor.commit();
-
-                                    //MainActivity.actionStart(LoginActivity.this,userIdInput);
-                                    UserActivity.actionStart(LoginActivity.this,userIdInput);
+                                    MainActivity.actionStart(LoginActivity.this,userIdInput);
                                     finish();
 
                                 } else {//密码错误
@@ -208,6 +207,11 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<Re<User>> call, Throwable t) {}
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
 }

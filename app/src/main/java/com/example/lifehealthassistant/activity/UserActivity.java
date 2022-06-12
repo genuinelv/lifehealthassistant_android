@@ -185,7 +185,7 @@ public class UserActivity extends AppCompatActivity {
 
     public void onUpdateUInfo(View v){
         UpdateUserActivity.actionStart(UserActivity.this,userid);
-        finish();
+        
     }
     public void onShowHealth(View v){
         ShowHealthActivity.actionStart(UserActivity.this,userid);

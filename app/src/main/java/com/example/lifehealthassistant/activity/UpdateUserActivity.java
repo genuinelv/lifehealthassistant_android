@@ -8,8 +8,10 @@ import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.DatePickerDialog;
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -26,6 +28,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lifehealthassistant.R;
@@ -38,6 +41,8 @@ import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Locale;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -58,7 +63,8 @@ public class UpdateUserActivity extends AppCompatActivity {
     private EditText username_update_edittext;
     //private EditText password_update_edittext;
     private ImageView userpic_update_image;
-
+    private TextView birthday_text;
+    private String birthday;
     private String userphoto;
 
     @Override
@@ -69,6 +75,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         username_update_edittext=(EditText) findViewById(R.id.username_update_edittext);
         //password_update_edittext=(EditText) findViewById(R.id.password_update_edittext);
         radioGroup=(RadioGroup)findViewById(R.id.radioGroup2);
+        birthday_text=(TextView)findViewById(R.id.birthday_text);
         userpic_update_image=(ImageView) findViewById(R.id.userpic_update_image);
     }
 
@@ -77,7 +84,30 @@ public class UpdateUserActivity extends AppCompatActivity {
         intent.putExtra("userid",id);
         context.startActivity(intent);
     }
+    public void onSelectBirthday(View v){
+        Calendar calendar = Calendar.getInstance();
+        DatePickerDialog dialog=new DatePickerDialog(UpdateUserActivity.this, null,
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH));
+        dialog.show();
 
+        // 确认按钮
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(view -> {
+            // 确认年月日
+            int year = dialog.getDatePicker().getYear();
+            int monthOfYear = dialog.getDatePicker().getMonth() + 1;
+            int dayOfMonth = dialog.getDatePicker().getDayOfMonth();
+            birthday_text.setText(formatDate(year, monthOfYear, dayOfMonth));
+            birthday=formatDate(year, monthOfYear, dayOfMonth);
+            // 关闭dialog
+            dialog.dismiss();
+        });
+
+    }
+    private String formatDate(int year, int monthOfYear, int dayOfMonth) {
+        return year + "-" + String.format(Locale.getDefault(), "%02d-%02d", monthOfYear, dayOfMonth);
+    }
     public void onCameraForUser(View view){
         //创建File对象，用于存储拍照后的图片
         String reallypath=getExternalCacheDir()+"/output_image"+System.currentTimeMillis()+".jpg";
@@ -234,6 +264,7 @@ public class UpdateUserActivity extends AppCompatActivity {
         user.setId(userid);
         user.setName(aaa);
         user.setSex(sex);
+        user.setBirthday(birthday);
         //user.setPassword(bbb);
         user.setPhoto(userphoto);
 

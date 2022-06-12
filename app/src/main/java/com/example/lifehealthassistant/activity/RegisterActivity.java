@@ -64,6 +64,10 @@ public class RegisterActivity extends AppCompatActivity {
                 final String userIdInput = userIdText.getText().toString();
                 final String userPasswordInput = userPasswordText.getText().toString();
                 final String userPasswordAgainInput = userPasswordAgainText.getText().toString();
+                if(userIdInput.length()>=30||userPasswordInput.length()>=16){
+                    Toast.makeText(RegisterActivity.this, "用户名要在30位以内，密码要在16位以内", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 //生成接口对象
                 UserInfoService service = retrofit.create(UserInfoService.class);
@@ -109,13 +113,14 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
 
     private void registerTodb(String idInteger,String userPasswordInput,String userPasswordAgainInput){
         if (userPasswordInput.equals(userPasswordAgainInput)) {//两次密码一致
-            User user=new User(idInteger,userPasswordInput,"系统用户","无",null);
+            User user=new User(idInteger,userPasswordInput,"系统用户","无",null,null);
 
             //生成接口对象
             UserInfoService service = retrofit.create(UserInfoService.class);
@@ -134,6 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "注册成功！", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                         startActivity(intent);
+                        finish();
 
                     }else{//失败，请重试
 

@@ -3,9 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="match_parent"/>
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_width="0dp"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -239,6 +242,8 @@
 
         </LinearLayout>
     </ScrollView>
-
+    <TextView
+        android:layout_width="30dp"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -6,26 +6,37 @@ public class User {
     private String name;
     private String sex;
     private String photo;
+    private String birthday;
 
     public User(){}
 
-    public User(String id, String password, String name, String sex, String photo) {
+    public User(String id, String password, String name, String sex, String photo, String birthday) {
         this.id = id;
         this.password = password;
         this.name = name;
         this.sex = sex;
         this.photo = photo;
+        this.birthday=birthday;
     }
 
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "id='" + id + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", photo='" + photo + '\'' +
+                ", birthday='" + birthday + '\'' +
                 '}';
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getSex() {

@@ -109,6 +109,7 @@ public class ShowDietActivity extends AppCompatActivity {
             int dayOfMonth = dialog.getDatePicker().getDayOfMonth();
             //datetext.setText(formatDate(year, monthOfYear, dayOfMonth));
             date_all=formatDate(year, monthOfYear, dayOfMonth);
+            date_text2.setText(date_all);
 
             // 关闭dialog
             dialog.dismiss();

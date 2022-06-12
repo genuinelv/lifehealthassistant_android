@@ -92,7 +92,7 @@ public class News {
         }
 
         public static class DataDTO {
-
+//uniquekey,title,date,category,author_name,url
             private String uniquekey;
             private String title;
             private String date;

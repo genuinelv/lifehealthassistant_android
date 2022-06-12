@@ -87,6 +87,13 @@
                                 android:layout_alignParentLeft="true"
                                 android:layout_below="@+id/username_show_text"
                                 android:text="无"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/userbirthday_show_text"
+                                android:layout_alignParentLeft="true"
+                                android:layout_below="@+id/username_show_text"
+                                android:text="2000-1-1"/>
                         </LinearLayout>
 
 
@@ -203,36 +210,91 @@
 
         </LinearLayout>
     </ScrollView>
+    <TextView
+        android:background="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
     <LinearLayout
+        android:background="@color/white"
         android:layout_gravity="bottom"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
-        <Button
-
-            android:layout_gravity="left"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="onMain3"
-            android:text="首页"/>
-        <Button
-
-            android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onFunction3"
-            android:text="功能"/>
-        <Button
+            android:onClick="onMain3">
 
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_gravity="left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="onMain3"
+                android:background="@drawable/one" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <TextView
+            android:background="@color/black"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:onClick="onPerson3"
-            android:text="个人"/>
+            android:layout_weight="1"
+            android:onClick="onFunction3">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_gravity="left"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="onFunction3"
+                android:background="@drawable/two" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <TextView
+            android:background="@color/black"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onPerson3">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+            <Button
+                android:layout_gravity="left"
+                android:onClick="onPerson3"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/three" />
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

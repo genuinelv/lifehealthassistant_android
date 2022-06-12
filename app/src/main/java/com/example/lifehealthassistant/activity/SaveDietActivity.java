@@ -359,6 +359,10 @@ public class SaveDietActivity extends AppCompatActivity {
     public void onAllLoad(View view){
         food_all=editText_food.getText().toString();
         String datetime_all=date_all+" "+time_all;
+        if(picture_uri_1==null||picture_uri_2==null||picture_uri_3==null){
+            Toast.makeText(this, "需要插入三张图片", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Diet adiet=new Diet(datetime_all,food_all,dietname_all,picture_uri_1,picture_uri_2,picture_uri_3);
         Log.d("lzn", "onAllLoad: "+adiet);
 
