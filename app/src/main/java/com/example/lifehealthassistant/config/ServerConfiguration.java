@@ -5,6 +5,6 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class ServerConfiguration {
-    public static final String IP = "http://10.135.62.18:10010/";//服务器地址，每次换网则修改
+    public static final String IP = "http://1.1.1.1:10010/";//服务器地址，每次换网则修改
 
 }
